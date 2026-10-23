@@ -1,0 +1,11 @@
+const router = require("express").Router();
+const auth = require("../middleware/auth");
+const controller = require("../controllers/serverController");
+router.use(auth);
+router.get("/", controller.list);
+router.post("/", controller.create);
+router.post("/join", controller.join);
+router.get("/:serverId/channels", controller.channels);
+router.post("/:serverId/channels", controller.createChannel);
+router.get("/channels/:channelId/messages", controller.messages);
+module.exports = router;
